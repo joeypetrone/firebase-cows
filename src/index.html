@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
     <a class="navbar-brand" href="#">Cows</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -21,8 +21,16 @@
       </ul>  
     </div>
   </nav>
-  <div id="auth"></div>
-  <div id="pasture" class="hide"></div>
-  <div id="farmhouse" class="hide">I SEE farmers <i class="fas fa-hat-cowboy-side"></i></div>
+  <div id="auth" class="ml-2"></div>
+  <div class="row m-0">
+    <div class="col-md-9 p-0">
+      <div id="pasture" class="hide mb-2"></div>
+      <div id="farmhouse" class="hide"></div>
+    </div>
+    <div class="col-md-3 p-0">
+      <div id="single-farmer" class="hide"></div>
+    </div>
+  </div>
+  
 </body>
 </html>
