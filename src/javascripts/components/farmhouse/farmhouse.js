@@ -9,7 +9,7 @@ const buildFarmers = () => {
       domString += '<h2 class="text-center">Farmhouse</h2>';
       domString += '<div class="d-flex flex-wrap">';
       farmers.forEach((farmer) => {
-        domString += farmerComponent.farmerMaker(farmer);
+        domString += farmerComponent.farmMaker(farmer);
       });
       domString += '</div>';
       utils.printToDom('farmhouse', domString);
