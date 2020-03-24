@@ -2,9 +2,11 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import pasture from '../../components/pasture/pasture';
+import farmHouse from '../../components/farmhouse/farmhouse';
 
 const authDiv = $('#auth');
 const pastureDiv = $('#pasture');
+const farmhouseDiv = $('#farmhouse');
 const logoutButton = $('#navbar-logout-button');
 
 const checkLoginStatus = () => {
@@ -12,11 +14,14 @@ const checkLoginStatus = () => {
     if (user) {
       authDiv.addClass('hide');
       pastureDiv.removeClass('hide');
+      farmhouseDiv.removeClass('hide');
       logoutButton.removeClass('hide');
       pasture.buildCows();
+      farmHouse.buildFarmers();
     } else {
       authDiv.removeClass('hide');
       pastureDiv.addClass('hide');
+      farmhouseDiv.addClass('hide');
       logoutButton.addClass('hide');
     }
   });
