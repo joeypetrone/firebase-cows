@@ -8,16 +8,17 @@ const getCows = () => new Promise((resolve, reject) => {
     .then((response) => {
       const demCows = response.data;
       const cows = [];
-
-      Object.keys(demCows).forEach((cowId) => {
-        demCows[cowId].id = cowId;
-        cows.push(demCows[cowId]);
-      });
-
+      if (demCows) {
+        Object.keys(demCows).forEach((cowId) => {
+          demCows[cowId].id = cowId;
+          cows.push(demCows[cowId]);
+        });
+      }
       resolve(cows);
     })
     .catch((err) => reject(err));
 });
 
+const deleteCow = (cowId) => axios.delete(`${baseUrl}/cows/${cowId}.json`);
 
-export default { getCows };
+export default { getCows, deleteCow };
