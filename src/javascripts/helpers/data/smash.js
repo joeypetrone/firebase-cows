@@ -52,11 +52,13 @@ const getCowsWithOwners = () => new Promise((resolve, reject) => {
               farmerResponse.forEach((oneFarmer) => {
                 const farmer = { ...oneFarmer };
                 const isOwner = farmerCowOwners.find((x) => x.farmerUid === farmer.uid);
-                farmer.isChacked = isOwner !== undefined;
+                farmer.isChecked = isOwner !== undefined;
+                farmer.farmerCowId = isOwner ? isOwner.id : `nope-${cow.id}-${farmer.id}`;
                 cow.farmers.push(farmer);
               });
               finalCows.push(cow);
             });
+            console.log('finalCows', finalCows);
             resolve(finalCows);
           })
           .catch();
