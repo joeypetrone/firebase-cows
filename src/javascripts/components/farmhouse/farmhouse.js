@@ -8,7 +8,7 @@ const buildFarmers = () => {
     .then((farmers) => {
       let domString = '';
       domString += '<h2 class="text-center">Farmhouse</h2>';
-      domString += '<div class="d-flex flex-wrap">';
+      domString += '<div class="d-flex flex-wrap mb-3">';
       farmers.forEach((farmer) => {
         domString += farmerComponent.farmMaker(farmer);
       });
