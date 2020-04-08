@@ -35,8 +35,18 @@ const makeACow = (e) => {
     .catch((err) => console.error('could not add cow', err));
 };
 
+// make smash getCowsWithOwners
+// move cowData.getCows into smash
+// in smash call farmerCowData.getFarmerCows, getAllFarmers
+// smash return array of cow objects - each should have an array of farmers
+// each farmer sould have aboolean idChecked (true if farmer owns cow)
+// mod domString, show checkboxes
+// when checkbox is checked POST to farmerCows
+// when checkbox is unchecked DELETE from farmerCows
+
+
 const buildCows = () => {
-  cowData.getCows()
+  smashData.getCowsWithOwners()
     .then((cows) => {
       let domString = '';
       domString += '<h2 class="text-center">Pasture</h2>';

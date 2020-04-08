@@ -39,4 +39,46 @@ const completelyRemoveCow = (cowId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getSingleFarmerWithCows, completelyRemoveCow };
+const getCowsWithOwners = () => new Promise((resolve, reject) => {
+  cowData.getCows()
+    .then((cowsResponse) => {
+      farmerData.getFarmers().then((farmerResponse) => {
+        farmerCowData.getFarmerCows()
+          .then((farmerCowsResponse) => {
+            const finalCows = [];
+            cowsResponse.forEach((oneCow) => {
+              const cow = { farmers: [], ...oneCow };
+              const farmerCowOwners = farmerCowsResponse.filter((x) => x.cowId === cow.id);
+              farmerResponse.forEach((oneFarmer) => {
+                const farmer = { ...oneFarmer };
+                const isOwner = farmerCowOwners.find((x) => x.farmerUid === farmer.uid);
+                farmer.isChacked = isOwner !== undefined;
+                cow.farmers.push(farmer);
+              });
+              finalCows.push(cow);
+            });
+            resolve(finalCows);
+          })
+          .catch();
+      });
+    })
+    .catch((err) => reject(err));
+});
+
+// [
+// {
+//   id: "cow1",
+// breed: "Jersey",
+// location: "NSS",
+// name: "Bessie",
+// weight: 30,
+// farmers: [
+//   {age: 1000, name: "zoe", uid: "", id: "farmer1", isChecked: true},
+//   {age: 83, name: "luke", uid: "12345", id: "farmer1", isChecked: false},
+//   {age: 12, name: "mary", uid: "67890", id: "farmer1", isChecked: false},
+
+// ]
+// }
+// ]
+
+export default { getSingleFarmerWithCows, completelyRemoveCow, getCowsWithOwners };
