@@ -40,6 +40,7 @@ const showForm = (cowId) => {
 
       utils.printToDom('edit-cow', domString);
       utils.printToDom('single-farmer', '');
+      utils.printToDom('new-cow', '');
     })
     .catch((err) => console.error('could not get single cow', err));
 };
