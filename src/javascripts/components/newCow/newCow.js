@@ -27,6 +27,7 @@ const showForm = () => {
 
   utils.printToDom('new-cow', domString);
   utils.printToDom('single-farmer', '');
+  utils.printToDom('edit-cow', '');
 };
 
 export default { showForm };

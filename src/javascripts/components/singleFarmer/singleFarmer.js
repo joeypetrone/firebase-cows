@@ -21,6 +21,7 @@ const buildFarmer = (e) => {
 
       utils.printToDom('single-farmer', domString);
       utils.printToDom('new-cow', '');
+      utils.printToDom('edit-cow', '');
     })
     .catch((err) => console.error('problem with single farmer', err));
 };
